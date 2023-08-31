@@ -1,0 +1,21 @@
+/*
+    saudacoes
+    ---------------------------
+
+    Jason Application File
+
+    This file defines the initial state of the MAS
+
+    Jason 3.2.0
+    agosto 31, 2023 - 19:40:03
+*/
+
+MAS saudacoes {
+
+    environment: example.Env(10)
+
+    agents: bob;
+            alice;
+
+    aslSourcePath: "src/agt";
+}

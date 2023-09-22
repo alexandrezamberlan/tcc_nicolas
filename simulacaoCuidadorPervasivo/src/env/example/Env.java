@@ -1,7 +1,6 @@
 package example;
 
 // Environment code for project simulacaoCuidadorPervasivo
-
 import jason.asSyntax.*;
 import jason.environment.*;
 import jason.asSyntax.parser.*;
@@ -33,15 +32,30 @@ public class Env extends Environment {
 
     public String gerarEventoExterno() {
         Random gerador = new Random();
+        switch (gerador.nextInt(3)) {            
+            case 0:
+                return "evento(barulho)"; //buzina, cachorro, fogos de artificio
+            case 1:
+                return "evento(visita)"; 
+            case 2:
+                return "evento(nenhum)";        
+            default:
+                break;
+        }
+        return "";
+    }
+
+    public String gerarClima() {
+        Random gerador = new Random();
         switch (gerador.nextInt(4)) {
             case 0:
-                return "evento(chuva)";
+                return "clima(chuva)";
             case 1:
-                return "evento(barulho)";
+                return "clima(tempestade)";
             case 2:
-                return "evento(visita)";
+                return "clima(normal)";
             case 3:
-                return "evento(nenhum)";        
+                return "clima(ventania)";        
             default:
                 break;
         }
@@ -55,6 +69,7 @@ public class Env extends Environment {
         try {
             addPercept(ASSyntax.parseLiteral(gerarTurno()));
             addPercept(ASSyntax.parseLiteral(gerarEventoExterno()));
+            addPercept(ASSyntax.parseLiteral(gerarClima()));
 
         } catch (ParseException e) {
             e.printStackTrace();

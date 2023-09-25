@@ -67,9 +67,12 @@ public class Env extends Environment {
     public void init(String[] args) {
         super.init(args);
         try {
-            addPercept(ASSyntax.parseLiteral(gerarTurno()));
-            addPercept(ASSyntax.parseLiteral(gerarEventoExterno()));
-            addPercept(ASSyntax.parseLiteral(gerarClima()));
+            // addPercept(ASSyntax.parseLiteral(gerarTurno()));
+            // addPercept(ASSyntax.parseLiteral(gerarEventoExterno()));
+            // addPercept(ASSyntax.parseLiteral(gerarClima()));
+            addPercept(ASSyntax.parseLiteral("turno(madrugada)"));
+            addPercept(ASSyntax.parseLiteral("clima(ventania)"));
+            addPercept(ASSyntax.parseLiteral("evento(barulho)"));
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -78,10 +81,32 @@ public class Env extends Environment {
 
     @Override
     public boolean executeAction(String agName, Structure action) {
-        logger.info("executing: "+action+", but not implemented!");
-        if (true) { // you may improve this condition
-             informAgsEnvironmentChanged();
+        
+        // System.out.println(agName);
+        // System.out.println(action.getFunctor());
+        // System.out.println(action.getTerm(0));
+
+        if (agName.equals("paciente") && action.getFunctor().equals("som") && action.getTerm(0).toString().equals("gritar")){
+            logger.info("paciente está gritando");
+            try {
+                addPercept(ASSyntax.parseLiteral("som(gritar)"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }   
+                        
+        } else logger.info("executing: "+action+", but not implemented!");
+        
+        
+        try {
+            Thread.sleep(5000);
+            removePercept(ASSyntax.parseLiteral("som(gritar)"));
+        } catch (InterruptedException e)  {
+            e.printStackTrace();
+        }  catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
         }
+
         return true; // the action was executed with success
     }
 

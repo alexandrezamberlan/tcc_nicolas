@@ -12,6 +12,27 @@
     .print("paciente pronto para a simulação.......").
 
 
-+turno(noite) : true <-
-    .print("vi que é noite");
-    .broadcast(tell,grito(fraco)).
++evento(barulho): turno(madrugada) & clima(ventania)  
+    <- 
+       .print("vou gritar de medo");
+       //.broadcast(tell,som(gritar)).
+       som(gritar).
+
++evento(barulho): turno(madrugada)
+    <-
+       .print("vou levantar");
+       //.broadcast(tell,movimento(levantar)).
+       movimento(levantar).
+
++evento(barulho): true
+    <-
+       .print("vou chamar conhecido");
+       //.broadcast(tell,som(chamar)). 
+       som(chamar).
+
+//turno madrugada
+//clima ventania
+//evento barulho
+//	--- (som) gritar medo
+//	--- (som) chamar conjuge ou filho(a) ou parente
+//	---- (movimento) levantar

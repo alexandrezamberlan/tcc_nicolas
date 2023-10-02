@@ -11,11 +11,25 @@
 
 	- Situações
 		1) grito (histérico, dor, medo)
-		2) chamar (cuidador, filho, esposa, filha)
+		2) chamar (filho(a), conjuge, parente)
 
 		
 		2) sacudir-se
 		3) levantar-se
 		4) movimentar-se 
 		5) cair
+
+		
+Obsevações:
+	- em tese, o paciente não reconhece o cuidador
+
+
+Cenário
+turno madrugada
+clima ventania
+evento barulho
+	--- (som) gritar medo
+	--- (som) chamar conjuge ou filho(a) ou parente
+	---- (movimento) levantar
+
 

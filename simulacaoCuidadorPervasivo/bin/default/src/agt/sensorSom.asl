@@ -8,4 +8,8 @@
 
 /* Plans */
 
-+!start : true <- .print("hello world.").
++!start : true <- .print("pronto para tratar eventos de som").
+
+
++som(gritar): true  
+    <- .print("sensoriei um grito do paciente").

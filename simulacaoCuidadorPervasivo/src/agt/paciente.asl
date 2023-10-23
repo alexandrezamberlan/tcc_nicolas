@@ -27,8 +27,6 @@ estado(calmo).
        //.broadcast(tell,som(chamar)). 
        som(gritar).
 
-
-
 +tv(ligada): estado(calmo)
     <-
     .print("..... estou bem").

@@ -94,7 +94,18 @@ public class Env extends Environment {
                 e.printStackTrace();
             }   
                         
-        } else logger.info("executing: "+action+", but not implemented!");
+        } else if (agName.equals("atuadorSmartTV") && action.getFunctor().equals("ligarTV")){
+            logger.info("atuador da TV vai acionar sonoff...");
+            //chamada do sonoff para ligar TV
+
+            try {
+                addPercept(ASSyntax.parseLiteral("tv(ligada)"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }                           
+        }
+        
+        else logger.info("executing: "+action+", but not implemented!");
         
         
         try {

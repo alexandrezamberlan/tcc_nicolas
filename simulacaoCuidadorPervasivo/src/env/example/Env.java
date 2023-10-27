@@ -97,6 +97,14 @@ public class Env extends Environment {
                 e.printStackTrace();
             }   
                         
+        } else if (agName.equals("paciente") && action.getFunctor().equals("movimento") && action.getTerm(0).toString().equals("levantar")){
+            logger.info("paciente está levantando");
+            try {
+                addPercept(ASSyntax.parseLiteral("movimento(levantar)"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }   
+                        
         } else if (agName.equals("atuadorSmartTV") && action.getFunctor().equals("ligarTV")){
             logger.info("atuador da TV vai acionar sonoff...");
             //chamada do sonoff para ligar TV
@@ -109,7 +117,7 @@ public class Env extends Environment {
             }                           
         }
         
-        else logger.info("executing: "+action+", but not implemented!");
+        else logger.info("tentando executar : "+action+", mas ainda não implementado!");
         
         
         try {

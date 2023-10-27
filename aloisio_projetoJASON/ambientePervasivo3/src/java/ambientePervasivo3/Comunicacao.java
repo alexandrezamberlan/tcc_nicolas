@@ -30,6 +30,4 @@ public class Comunicacao {
 			System.out.println("Erro de comunicacao.");
 		}
 	}
-	
-	
 }

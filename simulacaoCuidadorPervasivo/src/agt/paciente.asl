@@ -5,7 +5,6 @@ estado(calmo).
 +!start : true  <- 
     .print("pronto para a simulação.......").
 
-
 +evento(barulho): turno(madrugada) & clima(ventania)  
     <- 
        .print("vou gritar de medo");
@@ -29,7 +28,6 @@ estado(calmo).
 +tv(ligada): estado(calmo)
     <-
     .print("..... estou bem").
-
 
 +tv(ligada): estado(agitado)
     <-

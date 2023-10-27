@@ -1,11 +1,9 @@
 estado(calmo).
 
-
 !start.
 
 +!start : true  <- 
-    .print("paciente pronto para a simulação.......").
-
+    .print("pronto para a simulação.......").
 
 +evento(barulho): turno(madrugada) & clima(ventania)  
     <- 
@@ -31,10 +29,9 @@ estado(calmo).
     <-
     .print("..... estou bem").
 
-
 +tv(ligada): estado(agitado)
     <-
-    som(gritar).
+    som(gritar);
     .send(cuidador,tell,paciente(grito)).
     
 

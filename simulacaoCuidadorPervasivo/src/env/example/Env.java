@@ -115,6 +115,16 @@ public class Env extends Environment {
             } catch (ParseException e) {
                 e.printStackTrace();
             }                           
+        } else if (agName.equals("atuadorIluminacao") && action.getFunctor().equals("ligarIluminacao")){
+            logger.info("atuador da Iluminaca vai acionar sonoff...");
+            //chamada do sonoff para ligar Luz
+            Comunicacao.Sonoff(endereco_iluminacao, "on", 0, null);
+
+            try {
+                addPercept(ASSyntax.parseLiteral("luz(ligada)"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }                           
         }
         
         else logger.info("tentando executar : "+action+", mas ainda não implementado!");

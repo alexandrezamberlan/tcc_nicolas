@@ -1,7 +1,9 @@
 tv(desligada).
+
 !start.
 
-+!start : true <- .print("pronto para tratar eventos de som").
++!start : true  <- 
+    .print("pronto para a simulação.......").
 
 
 +som(gritar) : true  

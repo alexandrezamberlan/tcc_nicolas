@@ -12,6 +12,9 @@ public class Env extends Environment {
 
     private Logger logger = Logger.getLogger("simulacaoCuidadorPervasivo."+Env.class.getName());
 
+    public String endereco_tv = "http://192.168.1.120:8081/zeroconf/switch";
+	public String endereco_iluminacao = "http://192.168.1.121:8081/zeroconf/switch";
+
 
     public String gerarTurno() {
         Random gerador = new Random();
@@ -97,6 +100,7 @@ public class Env extends Environment {
         } else if (agName.equals("atuadorSmartTV") && action.getFunctor().equals("ligarTV")){
             logger.info("atuador da TV vai acionar sonoff...");
             //chamada do sonoff para ligar TV
+            Comunicacao.Sonoff(endereco_tv, "on", 12, null);
 
             try {
                 addPercept(ASSyntax.parseLiteral("tv(ligada)"));

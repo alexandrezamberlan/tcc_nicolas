@@ -1,15 +1,12 @@
-// Agent bob in project simulacaoCuidadorPervasivo
-
-/* Initial beliefs and rules */
-
-/* Initial goals */
-
+tv(desligada).
 !start.
-
-/* Plans */
 
 +!start : true <- .print("pronto para tratar eventos de som").
 
 
-+som(gritar): true  
-    <- .print("sensoriei um grito do paciente").
++som(gritar) : true  
+    <- .print("sensoriei um grito do paciente");
+       .send(atuadorSmartTV,tell,grito);
+       -tv(desligada).
+
+    

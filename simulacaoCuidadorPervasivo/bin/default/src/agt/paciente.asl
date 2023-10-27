@@ -1,12 +1,7 @@
-// Agent alice in project simulacaoCuidadorPervasivo
+estado(calmo).
 
-/* Initial beliefs and rules */
-
-/* Initial goals */
 
 !start.
-
-/* Plans */
 
 +!start : true  <- 
     .print("paciente pronto para a simulação.......").
@@ -15,6 +10,8 @@
 +evento(barulho): turno(madrugada) & clima(ventania)  
     <- 
        .print("vou gritar de medo");
+       -estado(calmo);
+       +estado(agitado);
        //.broadcast(tell,som(gritar)).
        som(gritar).
 
@@ -28,7 +25,18 @@
     <-
        .print("vou chamar conhecido");
        //.broadcast(tell,som(chamar)). 
-       som(chamar).
+       som(gritar).
+
++tv(ligada): estado(calmo)
+    <-
+    .print("..... estou bem").
+
+
++tv(ligada): estado(agitado)
+    <-
+    som(gritar).
+    .send(cuidador,tell,paciente(grito)).
+    
 
 //turno madrugada
 //clima ventania

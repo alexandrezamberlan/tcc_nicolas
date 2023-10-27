@@ -1,6 +1,5 @@
 estado(calmo).
 
-
 !start.
 
 +!start : true  <- 
@@ -34,7 +33,7 @@ estado(calmo).
 
 +tv(ligada): estado(agitado)
     <-
-    som(gritar).
+    som(gritar);
     .send(cuidador,tell,paciente(grito)).
     
 

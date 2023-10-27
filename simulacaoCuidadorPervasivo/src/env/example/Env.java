@@ -70,12 +70,12 @@ public class Env extends Environment {
     public void init(String[] args) {
         super.init(args);
         try {
-            // addPercept(ASSyntax.parseLiteral(gerarTurno()));
-            // addPercept(ASSyntax.parseLiteral(gerarEventoExterno()));
-            // addPercept(ASSyntax.parseLiteral(gerarClima()));
-            addPercept(ASSyntax.parseLiteral("turno(madrugada)"));
-            addPercept(ASSyntax.parseLiteral("clima(ventania)"));
-            addPercept(ASSyntax.parseLiteral("evento(barulho)"));
+            addPercept(ASSyntax.parseLiteral(gerarTurno()));
+            addPercept(ASSyntax.parseLiteral(gerarEventoExterno()));
+            addPercept(ASSyntax.parseLiteral(gerarClima()));
+            // addPercept(ASSyntax.parseLiteral("turno(madrugada)"));
+            // addPercept(ASSyntax.parseLiteral("clima(ventania)"));
+            // addPercept(ASSyntax.parseLiteral("evento(barulho)"));
 
         } catch (ParseException e) {
             e.printStackTrace();

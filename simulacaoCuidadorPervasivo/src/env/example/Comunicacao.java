@@ -5,7 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Comunicacao {
-	public static void Sonoff(String query_url, String operador, String volume, String iluminacao) {		
+	public static void Sonoff(String query_url, String operador, int volume, String iluminacao) {		
 		// String data = " { \"data\" : { \"switch\" : \"off\" } }";
 		String data = " { \"data\" : { \"switch\" :  \"" + operador + "\" } }";
 		try {

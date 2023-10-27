@@ -3,7 +3,7 @@ estado(calmo).
 !start.
 
 +!start : true  <- 
-    .print("paciente pronto para a simulação.......").
+    .print("pronto para a simulação.......").
 
 
 +evento(barulho): turno(madrugada) & clima(ventania)  

@@ -1,13 +1,13 @@
-package example;
+package src.env.simulacao;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Comunicacao {
-	public static void Sonoff(String query_url, String operador, int volume, String iluminacao) {		
-		// String data = " { \"data\" : { \"switch\" : \"off\" } }";
-		String data = " { \"data\" : { \"switch\" :  \"" + operador + "\" } }";
+	public static void Sonoff(String query_url, String operador, int volume, String iluminacao) {				
+		String data = "{ \"data\" : { \"switch\" :  \"" + operador + "\" } }";
+		//{"data" : {"switch": on, "volume": 10, "iluminacao": forte}}
 		try {
 			URL url = new URL(query_url);
 			HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
@@ -22,10 +22,6 @@ public class Comunicacao {
 			os.close();
 			conexao.getResponseMessage();
 			conexao.disconnect();
-			//System.out.println(conexao);
-			//System.out.println("Finalizou.");
-			//System.out.println(os);
-			//System.out.println("concluiu");
 		} catch (Exception e) {
 			System.out.println("Erro de comunicacao.");
 		}

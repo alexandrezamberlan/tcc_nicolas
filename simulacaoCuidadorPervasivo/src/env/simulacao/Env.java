@@ -1,4 +1,4 @@
-package example;
+package src.env.simulacao;
 
 // Environment code for project simulacaoCuidadorPervasivo
 import jason.asSyntax.*;
@@ -10,7 +10,7 @@ import java.util.logging.*;
 
 public class Env extends Environment {
 
-    private Logger logger = Logger.getLogger("simulacaoCuidadorPervasivo."+Env.class.getName());
+    private Logger logger = Logger.getLogger("simulacaoCuidadorPervasivo."+ Env.class.getName());
 
     public String endereco_tv = "http://192.168.1.120:8081/zeroconf/switch";
 	public String endereco_iluminacao = "http://192.168.1.121:8081/zeroconf/switch";
@@ -73,10 +73,6 @@ public class Env extends Environment {
             addPercept(ASSyntax.parseLiteral(gerarTurno()));
             addPercept(ASSyntax.parseLiteral(gerarEventoExterno()));
             addPercept(ASSyntax.parseLiteral(gerarClima()));
-            // addPercept(ASSyntax.parseLiteral("turno(madrugada)"));
-            // addPercept(ASSyntax.parseLiteral("clima(ventania)"));
-            // addPercept(ASSyntax.parseLiteral("evento(barulho)"));
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -84,32 +80,24 @@ public class Env extends Environment {
 
     @Override
     public boolean executeAction(String agName, Structure action) {
-        
-        // System.out.println(agName);
-        // System.out.println(action.getFunctor());
-        // System.out.println(action.getTerm(0));
-
         if (agName.equals("paciente") && action.getFunctor().equals("som") && action.getTerm(0).toString().equals("gritar")){
             logger.info("paciente está gritando");
             try {
                 addPercept(ASSyntax.parseLiteral("som(gritar)"));
             } catch (ParseException e) {
                 e.printStackTrace();
-            }   
-                        
+            }                         
         } else if (agName.equals("paciente") && action.getFunctor().equals("movimento") && action.getTerm(0).toString().equals("levantar")){
             logger.info("paciente está levantando");
             try {
                 addPercept(ASSyntax.parseLiteral("movimento(levantar)"));
             } catch (ParseException e) {
                 e.printStackTrace();
-            }   
-                        
+            }             
         } else if (agName.equals("atuadorSmartTV") && action.getFunctor().equals("ligarTV")){
             logger.info("atuador da TV vai acionar sonoff...");
             //chamada do sonoff para ligar TV
             Comunicacao.Sonoff(endereco_tv, "on", 12, null);
-
             try {
                 addPercept(ASSyntax.parseLiteral("tv(ligada)"));
             } catch (ParseException e) {
@@ -119,16 +107,13 @@ public class Env extends Environment {
             logger.info("atuador da Iluminaca vai acionar sonoff...");
             //chamada do sonoff para ligar Luz
             Comunicacao.Sonoff(endereco_iluminacao, "on", 0, null);
-
             try {
                 addPercept(ASSyntax.parseLiteral("luz(ligada)"));
             } catch (ParseException e) {
                 e.printStackTrace();
             }                           
-        }
-        
-        else logger.info("tentando executar : "+action+", mas ainda não implementado!");
-        
+        }        
+        else logger.info("tentando executar : "+action+", mas ainda não implementado!");        
         
         try {
             Thread.sleep(5000);
@@ -136,13 +121,10 @@ public class Env extends Environment {
         } catch (InterruptedException e)  {
             e.printStackTrace();
         }  catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
         }
-
         return true; // the action was executed with success
     }
-
     /** Called before the end of MAS execution */
     @Override
     public void stop() {

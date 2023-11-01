@@ -1,4 +1,4 @@
-package src.env.simulacao;
+package simulacao;
 
 // Environment code for project simulacaoCuidadorPervasivo
 import jason.asSyntax.*;

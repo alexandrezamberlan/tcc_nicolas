@@ -1,4 +1,4 @@
-package src.env.simulacao;
+package simulacao;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;

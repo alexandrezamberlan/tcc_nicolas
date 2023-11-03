@@ -17,6 +17,11 @@ estado(calmo).
        .print("vou levantar");
        movimento(levantar).
 
++evento(visita): turno(noite)
+    <-
+       .print("vou levantar");
+       movimento(levantar).
+
 +evento(barulho): true
     <-
        .print("vou chamar conhecido");
@@ -30,3 +35,8 @@ estado(calmo).
     <-
     som(gritar);
     .send(cuidador,tell,paciente(grito)).
+
++evento(barulho): turno(noite)
+    <-
+       .print("vou sacudir");
+       movimento(sacudir).

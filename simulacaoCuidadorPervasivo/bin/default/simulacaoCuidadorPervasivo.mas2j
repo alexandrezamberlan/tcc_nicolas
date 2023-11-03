@@ -1,7 +1,7 @@
 
 MAS simulacaoCuidadorPervasivo {
 
-    environment: example.Env("teste")
+    environment: simulacao.Env("Cenário Quarto + Paciente")
 
     agents: paciente;
             cuidador;

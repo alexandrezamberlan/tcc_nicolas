@@ -70,9 +70,22 @@ public class Env extends Environment {
     public void init(String[] args) {
         super.init(args);
         try {
-            addPercept(ASSyntax.parseLiteral(gerarTurno()));
+           /* addPercept(ASSyntax.parseLiteral(gerarTurno()));
             addPercept(ASSyntax.parseLiteral(gerarEventoExterno()));
-            addPercept(ASSyntax.parseLiteral(gerarClima()));
+            addPercept(ASSyntax.parseLiteral(gerarClima()));*/
+
+           /* addPercept(ASSyntax.parseLiteral("turno(madrugada)"));
+            addPercept(ASSyntax.parseLiteral("evento(barulho)"));
+            addPercept(ASSyntax.parseLiteral("clima(normal)"));*/
+
+            addPercept(ASSyntax.parseLiteral("turno(noite)"));
+            addPercept(ASSyntax.parseLiteral("evento(visita)"));
+            addPercept(ASSyntax.parseLiteral("clima(normal)"));
+
+            /*addPercept(ASSyntax.parseLiteral("turno(manha)"));
+            addPercept(ASSyntax.parseLiteral("evento(barulho)"));
+            addPercept(ASSyntax.parseLiteral("clima(tempestade)"));*/
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -104,7 +117,7 @@ public class Env extends Environment {
                 e.printStackTrace();
             }                           
         } else if (agName.equals("atuadorIluminacao") && action.getFunctor().equals("ligarIluminacao")){
-            logger.info("atuador da Iluminaca vai acionar sonoff...");
+            logger.info("atuador da Iluminacao vai acionar sonoff...");
             //chamada do sonoff para ligar Luz
             Comunicacao.Sonoff(endereco_iluminacao, "on", 0, null);
             try {

@@ -12,3 +12,8 @@
     <- 
         .print(Agt,  " me acionou");
         ligarTV.
+
++sacode[source(Agt)] : true
+    <- 
+        .print(Agt,  " me acionou");
+        ligarTV.

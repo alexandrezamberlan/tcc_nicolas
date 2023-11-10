@@ -12,8 +12,8 @@ public class Env extends Environment {
 
     private Logger logger = Logger.getLogger("simulacaoCuidadorPervasivo."+ Env.class.getName());
 
-    public String endereco_tv = "http://192.168.1.120:8081/zeroconf/switch";
-	public String endereco_iluminacao = "http://192.168.1.121:8081/zeroconf/switch";
+    public String endereco_tv = "http://10.0.0.101:8081/zeroconf/switch";
+	public String endereco_iluminacao = "http://10.0.0.101:8081/zeroconf/switch";
 
 
     public String gerarTurno() {
@@ -68,7 +68,7 @@ public class Env extends Environment {
     /** Called before the MAS execution with the args informed in .mas2j */
     @Override
     public void init(String[] args) {
-        super.init(args);
+        super.init(args);0
         try {
            /* addPercept(ASSyntax.parseLiteral(gerarTurno()));
             addPercept(ASSyntax.parseLiteral(gerarEventoExterno()));
